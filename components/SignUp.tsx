@@ -11,7 +11,7 @@ async function signInWithMicrosoft() {
     provider: 'azure',
   })
 }
-export default function SignUp2() {
+export default function SignUp() {
   return (
     <>
       <div className='flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8'>
