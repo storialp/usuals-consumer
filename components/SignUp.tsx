@@ -1,3 +1,16 @@
+import { supabase } from '../client'
+
+async function signInWIthGoogle() {
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: 'google',
+  })
+}
+
+async function signInWithMicrosoft() {
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: 'azure',
+  })
+}
 export default function SignUp2() {
   return (
     <>
@@ -28,7 +41,7 @@ export default function SignUp2() {
               href='#'
               className='font-medium text-blue-600 hover:text-blue-500'
             >
-              Also works for sign-up
+              Also works for signing up
             </a>
           </p>
         </div>
@@ -36,77 +49,81 @@ export default function SignUp2() {
         <div className='mt-8 mx-auto w-full max-w-md'>
           <div className='bg-white py-8 px-10 shadow sm:rounded-lg sm:px-10'>
             <div className='grid grid-cols-1 gap-4 '>
-              <div className='relative flex items-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2 hover:border-gray-400'>
-                <div className='flex-shrink-0'>
-                  <svg
-                    className='h-10 w-10 rounded-full'
-                    preserveAspectRatio='none'
-                    stroke='currentColor'
-                    fill='none'
-                    viewBox='0 0 186.69 190.5'
-                    aria-hidden='true'
-                  >
-                    <g transform='translate(1184.583 765.171)'>
-                      <path
-                        clipPath='none'
-                        mask='none'
-                        d='M-1089.333-687.239v36.888h51.262c-2.251 11.863-9.006 21.908-19.137 28.662l30.913 23.986c18.011-16.625 28.402-41.044 28.402-70.052 0-6.754-.606-13.249-1.732-19.483z'
-                        fill='#4285f4'
-                      />
-                      <path
-                        clipPath='none'
-                        mask='none'
-                        d='M-1142.714-651.791l-6.972 5.337-24.679 19.223h0c15.673 31.086 47.796 52.561 85.03 52.561 25.717 0 47.278-8.486 63.038-23.033l-30.913-23.986c-8.486 5.715-19.31 9.179-32.125 9.179-24.765 0-45.806-16.712-53.34-39.226z'
-                        fill='#34a853'
-                      />
-                      <path
-                        clipPath='none'
-                        mask='none'
-                        d='M-1174.365-712.61c-6.494 12.815-10.217 27.276-10.217 42.689s3.723 29.874 10.217 42.689c0 .086 31.693-24.592 31.693-24.592-1.905-5.715-3.031-11.776-3.031-18.098s1.126-12.383 3.031-18.098z'
-                        fill='#fbbc05'
-                      />
-                      <path
-                        d='M-1089.333-727.244c14.028 0 26.497 4.849 36.455 14.201l27.276-27.276c-16.539-15.413-38.013-24.852-63.731-24.852-37.234 0-69.359 21.388-85.032 52.561l31.692 24.592c7.533-22.514 28.575-39.226 53.34-39.226z'
-                        fill='#ea4335'
-                        clipPath='none'
-                        mask='none'
-                      />
-                    </g>
-                  </svg>
+              <button onClick={() => signInWIthGoogle()}>
+                <div className='relative flex items-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2 hover:border-gray-400'>
+                  <div className='flex-shrink-0'>
+                    <svg
+                      className='h-10 w-10 rounded-full'
+                      preserveAspectRatio='none'
+                      stroke='currentColor'
+                      fill='none'
+                      viewBox='0 0 186.69 190.5'
+                      aria-hidden='true'
+                    >
+                      <g transform='translate(1184.583 765.171)'>
+                        <path
+                          clipPath='none'
+                          mask='none'
+                          d='M-1089.333-687.239v36.888h51.262c-2.251 11.863-9.006 21.908-19.137 28.662l30.913 23.986c18.011-16.625 28.402-41.044 28.402-70.052 0-6.754-.606-13.249-1.732-19.483z'
+                          fill='#4285f4'
+                        />
+                        <path
+                          clipPath='none'
+                          mask='none'
+                          d='M-1142.714-651.791l-6.972 5.337-24.679 19.223h0c15.673 31.086 47.796 52.561 85.03 52.561 25.717 0 47.278-8.486 63.038-23.033l-30.913-23.986c-8.486 5.715-19.31 9.179-32.125 9.179-24.765 0-45.806-16.712-53.34-39.226z'
+                          fill='#34a853'
+                        />
+                        <path
+                          clipPath='none'
+                          mask='none'
+                          d='M-1174.365-712.61c-6.494 12.815-10.217 27.276-10.217 42.689s3.723 29.874 10.217 42.689c0 .086 31.693-24.592 31.693-24.592-1.905-5.715-3.031-11.776-3.031-18.098s1.126-12.383 3.031-18.098z'
+                          fill='#fbbc05'
+                        />
+                        <path
+                          d='M-1089.333-727.244c14.028 0 26.497 4.849 36.455 14.201l27.276-27.276c-16.539-15.413-38.013-24.852-63.731-24.852-37.234 0-69.359 21.388-85.032 52.561l31.692 24.592c7.533-22.514 28.575-39.226 53.34-39.226z'
+                          fill='#ea4335'
+                          clipPath='none'
+                          mask='none'
+                        />
+                      </g>
+                    </svg>
+                  </div>
+                  <div className='min-w-0 flex-1'>
+                    <a href='#' className='focus:outline-none'>
+                      <span className='absolute inset-0' aria-hidden='true' />
+                      <h2 className='text-lg font-semibold text-gray-900'>
+                        Continue with Google
+                      </h2>
+                    </a>
+                  </div>
                 </div>
-                <div className='min-w-0 flex-1'>
-                  <a href='#' className='focus:outline-none'>
-                    <span className='absolute inset-0' aria-hidden='true' />
-                    <h2 className='text-lg font-semibold text-gray-900'>
-                      Continue with Google
-                    </h2>
-                  </a>
+              </button>
+              <button>
+                <div className='relative flex items-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2 hover:border-gray-400'>
+                  <div className='flex-shrink-0'>
+                    <svg
+                      className='h-10 w-10'
+                      preserveAspectRatio='none'
+                      viewBox='0 0 23 23'
+                      aria-hidden='true'
+                    >
+                      <path fill='#f3f3f3' d='M0 0h23v23H0z' />
+                      <path fill='#f35325' d='M1 1h10v10H1z' />
+                      <path fill='#81bc06' d='M12 1h10v10H12z' />
+                      <path fill='#05a6f0' d='M1 12h10v10H1z' />
+                      <path fill='#ffba08' d='M12 12h10v10H12z' />
+                    </svg>
+                  </div>
+                  <div className='min-w-0 flex-1'>
+                    <a href='#' className='focus:outline-none'>
+                      <span className='absolute inset-0' aria-hidden='true' />
+                      <p className='text-lg font-semibold text-gray-900'>
+                        Continue with Microsoft
+                      </p>
+                    </a>
+                  </div>
                 </div>
-              </div>
-              <div className='relative flex items-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2 hover:border-gray-400'>
-                <div className='flex-shrink-0'>
-                  <svg
-                    className='h-10 w-10'
-                    preserveAspectRatio='none'
-                    viewBox='0 0 23 23'
-                    aria-hidden='true'
-                  >
-                    <path fill='#f3f3f3' d='M0 0h23v23H0z' />
-                    <path fill='#f35325' d='M1 1h10v10H1z' />
-                    <path fill='#81bc06' d='M12 1h10v10H12z' />
-                    <path fill='#05a6f0' d='M1 12h10v10H1z' />
-                    <path fill='#ffba08' d='M12 12h10v10H12z' />
-                  </svg>
-                </div>
-                <div className='min-w-0 flex-1'>
-                  <a href='#' className='focus:outline-none'>
-                    <span className='absolute inset-0' aria-hidden='true' />
-                    <p className='text-lg font-semibold text-gray-900'>
-                      Continue with Microsoft
-                    </p>
-                  </a>
-                </div>
-              </div>
+              </button>
             </div>
           </div>
         </div>
