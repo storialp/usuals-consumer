@@ -11,6 +11,7 @@ async function signInWithMicrosoft() {
     provider: 'azure',
   })
 }
+
 export default function SignUp() {
   return (
     <>
