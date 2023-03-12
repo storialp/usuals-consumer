@@ -90,7 +90,7 @@ export default function SignUp() {
                     </svg>
                   </div>
                   <div className='min-w-0 flex-1'>
-                    <a href='#' className='focus:outline-none'>
+                    <a className='focus:outline-none'>
                       <span className='absolute inset-0' aria-hidden='true' />
                       <h2 className='text-lg font-semibold text-gray-900'>
                         Continue with Google
