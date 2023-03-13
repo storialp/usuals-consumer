@@ -5,7 +5,7 @@ const short = require('short-uuid')
 export const UserBarCode = () => {
   const user = useUser().id
   console.log(user)
-  const translator = short()
+  const translator = short(short.constants.cookieBase90)
   const shortID = translator.fromUUID(user)
   const longID = translator.toUUID(shortID)
   console.log(longID)
