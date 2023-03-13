@@ -7,7 +7,7 @@ export const UserBarCode = () => {
   const shortID = translator.fromUUID(user)
   return (
     <div className='flex items-center justify-center'>
-      <Barcode value={shortID.id} width='1' />
+      <Barcode value={shortID} width='1' />
     </div>
   )
 }
