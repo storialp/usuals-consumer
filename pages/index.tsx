@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import SignUp from '@component/components/SignUp'
 import { useSession } from '@supabase/auth-helpers-react'
 import { UserBarCode } from '@component/components/UserBarCode'
+import NavBar from '@component/components/NavBar'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,6 +17,7 @@ export default function Home() {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
+      {session && <NavBar />}
       {!session ? <SignUp /> : <UserBarCode />}
     </>
   )
