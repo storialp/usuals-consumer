@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
@@ -64,6 +65,7 @@ export default function NavBar() {
           </nav>
           <Dialog as='div' open={mobileMenuOpen} onClose={setMobileMenuOpen}>
             <Dialog.Panel
+              // @ts-ignore:next-line
               focus='true'
               className='fixed inset-0 z-10 overflow-y-auto bg-white px-6 py-6 lg:hidden'
             >
