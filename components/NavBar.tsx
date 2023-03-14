@@ -63,7 +63,7 @@ export default function NavBar() {
               </a> */}
               <div className='relative ml-3 flex'>
                 <a href='#footer'>
-                  <p>hello</p>
+                  <p>Sign Out</p>
                 </a>
               </div>
             </div>
@@ -100,6 +100,7 @@ export default function NavBar() {
                         key={item.name}
                         href={item.href}
                         className='-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-400/10'
+                        onClick={() => setMobileMenuOpen(false)}
                       >
                         {item.name}
                       </a>
@@ -116,9 +117,12 @@ export default function NavBar() {
                   <div className='py-4'>
                     <a
                       className='-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10'
-                      onClick={() => signOut()}
+                      onClick={() => {
+                        signOut()
+                        setMobileMenuOpen(false)
+                      }}
                     >
-                      Sign out
+                      Sign Out
                     </a>
                   </div>
                 </div>
