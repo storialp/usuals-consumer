@@ -62,9 +62,13 @@ export default function NavBar() {
                 Log in
               </a> */}
               <div className='relative ml-3 flex'>
-                <a href='#footer'>
-                  <p>Sign Out</p>
-                </a>
+                <button
+                  type='button'
+                  className='inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-full shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500'
+                  onClick={() => signOut()}
+                >
+                  Sign Out
+                </button>
               </div>
             </div>
           </nav>
