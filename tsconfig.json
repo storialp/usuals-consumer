@@ -18,6 +18,12 @@
       "@component/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "components/UsualsLogo.jsx",
+    "components/UserBarCode.jsx"
+  ],
   "exclude": ["node_modules"]
 }

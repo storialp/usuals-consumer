@@ -47,8 +47,8 @@ export default function SignUp() {
           </p>
         </div>
 
-        <div className='mt-8 mx-auto w-full max-w-md'>
-          <div className='bg-white py-8 px-10 shadow sm:rounded-lg sm:px-10'>
+        <div className='mt-8 mx-auto w-5/6 sm:w-full max-w-md'>
+          <div className='bg-white py-8 px-10 shadow rounded-lg'>
             <div className='grid grid-cols-1 gap-4 '>
               <button onClick={() => signInWIthGoogle()}>
                 <div className='relative flex items-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2 hover:border-gray-400'>
