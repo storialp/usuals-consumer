@@ -3,13 +3,18 @@ import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import UsualsLogo from './UsualsLogo'
+import { supabase } from '../client'
 
 const navigation = [
-  { name: 'Features', href: '/#features' },
+  { name: 'My Programs', href: '/' },
   // { name: 'Pricing', href: '/#pricing' },
   // { name: 'Blog', href: '/blog' },
-  { name: 'Waitlist', href: '#footer' },
+  // { name: 'Waitlist', href: '#footer' },
 ]
+
+async function signOut() {
+  const { error } = await supabase.auth.signOut()
+}
 
 export default function NavBar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -110,10 +115,10 @@ export default function NavBar() {
                   </div> */}
                   <div className='py-4'>
                     <a
-                      href='#footer'
                       className='-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10'
+                      onClick={() => signOut()}
                     >
-                      Sign up to our waitlist
+                      Sign out
                     </a>
                   </div>
                 </div>
