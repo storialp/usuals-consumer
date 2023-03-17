@@ -4,9 +4,11 @@ import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import UsualsLogo from './UsualsLogo'
 import { supabase } from '../client'
+import { useRouter } from 'next/router'
+import { useUser } from '@supabase/auth-helpers-react'
 
 const navigation = [
-  { name: 'My Programs', href: '/' },
+  { name: 'My Programs', href: '/my-programs' },
   // { name: 'Pricing', href: '/#pricing' },
   // { name: 'Blog', href: '/blog' },
   // { name: 'Waitlist', href: '#footer' },
@@ -18,7 +20,7 @@ async function signOut() {
 
 export default function NavBar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-
+  const router = useRouter()
   return (
     <div className='isolate'>
       <div className='px-6 pt-6 lg:px-8'>
@@ -80,7 +82,7 @@ export default function NavBar() {
             >
               <div className='flex h-9 items-center justify-between'>
                 <div className='flex'>
-                  <a href='#' className='-m-1.5 p-1.5'>
+                  <a href='/' className='-m-1.5 p-1.5'>
                     <span className='sr-only'>Usuals</span>
                     <UsualsLogo />
                   </a>

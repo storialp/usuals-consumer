@@ -1,0 +1,67 @@
+import { supabase } from '@component/client'
+import YourUsualsBusinesses from './YourUsualsBusinesses'
+import { PlusCircleIcon } from '@heroicons/react/24/outline'
+import { useState, useEffect } from 'react'
+import { useUser } from '@supabase/auth-helpers-react'
+
+export const MyBusinesses = () => {
+  const user = useUser()?.id
+  const [myPrograms, setMyPrograms] = useState([])
+  useEffect(() => {
+    supabase
+      .from('member_programms')
+      .select('business_id')
+      .eq('user_id', user)
+      .then((result) => {
+        const businessesIds = result.data.map((item) => item.business_id)
+        supabase
+          .from('businesses')
+          .select()
+          .in('id', businessesIds)
+          .then((result) => {
+            setMyPrograms(result.data)
+          })
+      })
+    console.log(myPrograms)
+  }, [user])
+  return (
+    <div className='flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8'>
+      <div className='sm:mx-auto sm:w-full sm:max-w-md'>
+        <YourUsualsBusinesses className='mx-auto h-full w-4/5' />
+      </div>
+      <div className='mt-8 mx-auto w-5/6 sm:w-full max-w-md'>
+        <div className='bg-white py-8 px-10 shadow rounded-lg'>
+          <div className='grid grid-cols-1 gap-4 '>
+            <div className='relative flex items-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2 hover:border-gray-400'>
+              <div className='flex-shrink-0'>
+                <img
+                  className='h-10 w-10 rounded-full'
+                  src='https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_1280.jpg'
+                  alt='Pizza place'
+                />
+              </div>
+              <div className='min-w-0 flex-1'>
+                <a href='#' className='focus:outline-none'>
+                  <span className='absolute inset-0' aria-hidden='true' />
+                  <p className='text-sm font-medium text-gray-900'>
+                    Pizza Parlor
+                  </p>
+                  <p className='truncate text-sm text-gray-500'>
+                    Number of Points
+                  </p>
+                </a>
+              </div>
+            </div>
+          </div>
+          <button
+            type='button'
+            className='mt-8 mx-auto text-gray-500 items-center justify-center flex hover:text-gray-600'
+            // onClick={() => setMobileMenuOpen(true)}
+          >
+            <PlusCircleIcon className='h-8 w-8' />
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}

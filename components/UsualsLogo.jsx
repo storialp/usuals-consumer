@@ -1,4 +1,4 @@
-export default function UsualsLogo1(props) {
+export default function UsualsLogo(props) {
   return (
     <svg
       width='84.25'
