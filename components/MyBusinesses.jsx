@@ -6,19 +6,26 @@ import { useUser } from '@supabase/auth-helpers-react'
 
 export const MyBusinesses = () => {
   const user = useUser()?.id
+  console.log()
   const [myPrograms, setMyPrograms] = useState([])
   useEffect(() => {
+    if (!user) {
+      return
+    }
     supabase
       .from('member_programms')
       .select('business_id')
       .eq('user_id', user)
       .then((result) => {
+        console.log(result)
         const businessesIds = result.data.map((item) => item.business_id)
+        console.log(businessesIds)
         supabase
           .from('businesses')
           .select()
           .in('id', businessesIds)
           .then((result) => {
+            console.log(result)
             setMyPrograms(result.data)
           })
       })
