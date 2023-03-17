@@ -33,7 +33,7 @@ export const MyBusinesses = () => {
   return (
     <div className='flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8'>
       <div className='sm:mx-auto sm:w-full sm:max-w-md'>
-        <YourUsualsBusinesses className='mx-auto h-full w-4/5' />
+        <YourUsualsBusinesses className='mx-auto h-full w-2/3' />
       </div>
       <div className='mt-8 mx-auto w-5/6 sm:w-full max-w-md'>
         <div className='bg-white py-8 px-10 shadow rounded-lg'>
