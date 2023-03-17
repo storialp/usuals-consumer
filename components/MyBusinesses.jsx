@@ -38,30 +38,31 @@ export const MyBusinesses = () => {
       <div className='mt-8 mx-auto w-5/6 sm:w-full max-w-md'>
         <div className='bg-white py-8 px-10 shadow rounded-lg'>
           <div className='grid grid-cols-1 gap-4 '>
-            <div className='relative flex items-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2 hover:border-gray-400'>
-              {myPrograms.map((item) => (
-                <div key={item.id}>
-                  <div className='flex-shrink-0'>
-                    <img
-                      className='h-10 w-10 rounded-full'
-                      src={item.logo_url}
-                      alt={item.business_name}
-                    />
-                  </div>
-                  <div className='min-w-0 flex-1'>
-                    <a href='#' className='focus:outline-none'>
-                      <span className='absolute inset-0' aria-hidden='true' />
-                      <p className='text-sm font-medium text-gray-900'>
-                        {item.business_name}
-                      </p>
-                      <p className='truncate text-sm text-gray-500'>
-                        Your Points
-                      </p>
-                    </a>
-                  </div>
+            {myPrograms.map((item) => (
+              <div
+                className='relative flex items-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2 hover:border-gray-400'
+                key={item.id}
+              >
+                <div className='flex-shrink-0'>
+                  <img
+                    className='h-10 w-10 rounded-full'
+                    src={item.logo_url}
+                    alt={item.business_name}
+                  />
                 </div>
-              ))}
-            </div>
+                <div className='min-w-0 flex-1'>
+                  <a href='#' className='focus:outline-none'>
+                    <span className='absolute inset-0' aria-hidden='true' />
+                    <p className='text-sm font-medium text-gray-900'>
+                      {item.business_name}
+                    </p>
+                    <p className='truncate text-sm text-gray-500'>
+                      Your Points
+                    </p>
+                  </a>
+                </div>
+              </div>
+            ))}
           </div>
           <button
             type='button'
