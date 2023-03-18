@@ -68,7 +68,7 @@ export default function BusinessSearch() {
                   placeholder='Search...'
                   onChange={(event) => {
                     setQuery(event.target.value)
-                    console.log({ query })
+                    console.log(query)
                   }}
                 />
 
