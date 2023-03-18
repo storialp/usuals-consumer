@@ -9,7 +9,7 @@ import { useUser } from '@supabase/auth-helpers-react'
 
 const navigation = [
   { name: 'My Programs', href: '/my-programs' },
-  // { name: 'Pricing', href: '/#pricing' },
+  { name: 'Businesses', href: '/businesses' },
   // { name: 'Blog', href: '/blog' },
   // { name: 'Waitlist', href: '#footer' },
 ]

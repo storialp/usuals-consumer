@@ -1,7 +1,9 @@
-import { Fragment, useState } from 'react'
-import { UsersIcon } from '@heroicons/react/24/outline'
+import { Fragment, useState, useEffect } from 'react'
+import { BuildingStorefrontIcon } from '@heroicons/react/24/outline'
 import { Combobox, Dialog, Transition } from '@headlessui/react'
 import { supabase } from '../client'
+import { openSearchAtom } from '@component/pages/businesses/index'
+import { useAtom } from 'jotai/react'
 
 // const people = [
 //   { id: 1, name: 'Leslie Alexander', url: '#' },
@@ -12,24 +14,23 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function BusinessSearch() {
+export default function BusinessSearch(props) {
   const [query, setQuery] = useState('')
-
-  const [open, setOpen] = useState(true)
-
+  const [open, setOpen] = useAtom(openSearchAtom)
   const [businessList, setBusinessList] = useState([])
 
-  const businessListQuery =
-    query === ''
+  useEffect(() => {
+    query.length < 3
       ? []
       : supabase
           .from('businesses')
           .select()
-          .textSearch('business_name', { query })
+          .textSearch('business_name', query)
           .then((result) => {
+            console.log(result.data)
             setBusinessList(result.data)
-            return businessList
           })
+  }, [query])
 
   return (
     <Transition.Root
@@ -72,36 +73,39 @@ export default function BusinessSearch() {
                   }}
                 />
 
-                {businessListQuery.length > 0 && (
+                {businessList.length > 0 && (
                   <Combobox.Options
                     static
                     className='-mb-2 max-h-72 scroll-py-2 overflow-y-auto py-2 text-sm text-gray-800'
                   >
-                    {businessListQuery.map((item) => (
+                    {businessList.map((item) => (
                       <Combobox.Option
                         key={item.id}
                         value={item}
                         className={({ active }) =>
                           classNames(
                             'cursor-default select-none rounded-md px-4 py-2',
-                            active && 'bg-indigo-600 text-white'
+                            active && 'bg-blue-600 text-white'
                           )
                         }
                       >
-                        {item.name}
+                        {item.business_name}
                       </Combobox.Option>
                     ))}
                   </Combobox.Options>
                 )}
 
-                {query !== '' && businessListQuery.length === 0 && (
+                {query !== '' && businessList.length === 0 && (
                   <div className='py-14 px-4 text-center sm:px-14'>
-                    <UsersIcon
+                    <BuildingStorefrontIcon
                       className='mx-auto h-6 w-6 text-gray-400'
                       aria-hidden='true'
                     />
                     <p className='mt-4 text-sm text-gray-900'>
                       No businesses found using that search term.
+                    </p>
+                    <p className='mt-4 text-sm text-gray-900'>
+                      Try typing the first word.
                     </p>
                   </div>
                 )}

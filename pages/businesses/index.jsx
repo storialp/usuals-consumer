@@ -2,8 +2,10 @@ import Head from 'next/head'
 import { Inter } from 'next/font/google'
 import NavBar from '@component/components/NavBar'
 import BusinessSearch from '@component/components/BusinessSearch'
+import { atom, useAtom } from 'jotai'
 
 const inter = Inter({ subsets: ['latin'] })
+export const openSearchAtom = atom(true)
 
 export default function Home() {
   return (

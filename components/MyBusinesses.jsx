@@ -64,13 +64,9 @@ export const MyBusinesses = () => {
               </div>
             ))}
           </div>
-          <button
-            type='button'
-            className='mt-8 mx-auto text-gray-500 items-center justify-center flex hover:text-gray-600'
-            // onClick={() => setMobileMenuOpen(true)}
-          >
-            <PlusCircleIcon className='h-8 w-8' />
-          </button>
+          <a href=' /businesses'>
+            <PlusCircleIcon className='h-8 w-8 mt-8 mx-auto text-gray-500 hover:text-gray-600' />
+          </a>
         </div>
       </div>
     </div>
