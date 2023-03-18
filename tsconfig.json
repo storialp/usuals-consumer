@@ -24,7 +24,9 @@
     "**/*.tsx",
     "components/UsualsLogo.jsx",
     "components/UserBarCode.jsx",
-    "components/MyBusinesses.jsx"
+    "components/MyBusinesses.jsx",
+    "components/BusinessSearch.jsx",
+    "pages/businesses/index.jsx"
   ],
   "exclude": ["node_modules"]
 }
