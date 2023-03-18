@@ -66,7 +66,10 @@ export default function BusinessSearch() {
                 <Combobox.Input
                   className='w-full rounded-md border-0 bg-gray-100 px-4 py-2.5 text-gray-900 focus:ring-0 sm:text-sm'
                   placeholder='Search...'
-                  onChange={(event) => setQuery(event.target.value)}
+                  onChange={(event) => {
+                    setQuery(event.target.value)
+                    console.log({ query })
+                  }}
                 />
 
                 {businessListQuery.length > 0 && (
