@@ -28,6 +28,7 @@ export default function BusinessSearch() {
           .textSearch('business_name', { query })
           .then((result) => {
             setBusinessList(result.data)
+            return businessList
           })
 
   return (
@@ -68,12 +69,12 @@ export default function BusinessSearch() {
                   onChange={(event) => setQuery(event.target.value)}
                 />
 
-                {businessList.length > 0 && (
+                {businessListQuery.length > 0 && (
                   <Combobox.Options
                     static
                     className='-mb-2 max-h-72 scroll-py-2 overflow-y-auto py-2 text-sm text-gray-800'
                   >
-                    {businessList.map((item) => (
+                    {businessListQuery.map((item) => (
                       <Combobox.Option
                         key={item.id}
                         value={item}
@@ -90,7 +91,7 @@ export default function BusinessSearch() {
                   </Combobox.Options>
                 )}
 
-                {query !== '' && businessList.length === 0 && (
+                {query !== '' && businessListQuery.length === 0 && (
                   <div className='py-14 px-4 text-center sm:px-14'>
                     <UsersIcon
                       className='mx-auto h-6 w-6 text-gray-400'
