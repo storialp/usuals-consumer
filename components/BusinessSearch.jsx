@@ -63,7 +63,11 @@ export default function BusinessSearch(props) {
             leaveTo='opacity-0 scale-95'
           >
             <Dialog.Panel className='mx-auto max-w-xl transform rounded-xl bg-white p-2 shadow-2xl ring-1 ring-black ring-opacity-5 transition-all'>
-              <Combobox onChange={(item) => (window.location = item.logo_url)}>
+              <Combobox
+                onChange={() =>
+                  (window.location = '/businesses/' + businessList[0].id)
+                }
+              >
                 <Combobox.Input
                   className='w-full rounded-md border-0 bg-gray-100 px-4 py-2.5 text-gray-900 focus:ring-0 sm:text-sm'
                   placeholder='Search...'
@@ -81,7 +85,7 @@ export default function BusinessSearch(props) {
                     {businessList.map((item) => (
                       <Combobox.Option
                         key={item.id}
-                        value={item}
+                        value={item.business_name}
                         className={({ active }) =>
                           classNames(
                             'cursor-default select-none rounded-md px-4 py-2',
