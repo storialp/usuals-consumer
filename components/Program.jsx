@@ -10,9 +10,11 @@ const Program = () => {
   const [selectedProgram, setSelectedProgram] = useAtom(selectedProgramAtom)
   const router = useRouter()
   const joinProgram = async () => {
-    await supabase
-      .from('member_programs')
-      .insert([{ user_id: user, business_id: selectedProgram.id }])
+    selectedProgram &&
+      (await supabase
+        .from('member_programs')
+        .insert([{ user_id: user, business_id: selectedProgram.id }])
+        .single())
   }
   return (
     !open &&
