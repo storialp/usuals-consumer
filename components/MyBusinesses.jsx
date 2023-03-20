@@ -13,7 +13,7 @@ export const MyBusinesses = () => {
     }
     supabase
       .from('member_programs')
-      .select('businesses_id')
+      .select('business_id')
       .eq('user_id', user)
       .then((result) => {
         console.log(result)
