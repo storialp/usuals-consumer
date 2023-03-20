@@ -12,7 +12,7 @@ const Program = () => {
   const joinProgram = async () => {
     await supabase
       .from('member_programs')
-      .insert([{ user_id: user }, { business_id: selectedProgram.id }])
+      .insert([{ user_id: user, business_id: selectedProgram.id }])
   }
   return (
     !open &&
