@@ -13,8 +13,8 @@ export const MyBusinesses = () => {
     }
     supabase
       .from('businesses_profiles')
-      .select('business_id')
-      .eq('user_id', user)
+      .select('businesses_id')
+      .eq('profiles_id', user)
       .then((result) => {
         console.log(result)
         const businessesIds = result.data.map((item) => item.business_id)
