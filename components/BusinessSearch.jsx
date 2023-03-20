@@ -2,7 +2,10 @@ import { Fragment, useState, useEffect } from 'react'
 import { BuildingStorefrontIcon } from '@heroicons/react/24/outline'
 import { Combobox, Dialog, Transition } from '@headlessui/react'
 import { supabase } from '../client'
-import { openSearchAtom } from '@component/pages/businesses/index'
+import {
+  openSearchAtom,
+  selectedProgramAtom,
+} from '@component/pages/businesses'
 import { useAtom } from 'jotai/react'
 
 // const people = [
@@ -18,6 +21,7 @@ export default function BusinessSearch(props) {
   const [query, setQuery] = useState('')
   const [open, setOpen] = useAtom(openSearchAtom)
   const [businessList, setBusinessList] = useState([])
+  const [selectedProgram, setSelectedProgram] = useAtom(selectedProgramAtom)
 
   useEffect(() => {
     query.length < 3
@@ -64,9 +68,10 @@ export default function BusinessSearch(props) {
           >
             <Dialog.Panel className='mx-auto max-w-xl transform rounded-xl bg-white p-2 shadow-2xl ring-1 ring-black ring-opacity-5 transition-all'>
               <Combobox
-                onChange={() =>
-                  (window.location = '/businesses/' + businessList[0].id)
-                }
+                onChange={(business) => {
+                  setSelectedProgram(business)
+                  setOpen(false)
+                }}
               >
                 <Combobox.Input
                   className='w-full rounded-md border-0 bg-gray-100 px-4 py-2.5 text-gray-900 focus:ring-0 sm:text-sm'
@@ -85,7 +90,7 @@ export default function BusinessSearch(props) {
                     {businessList.map((item) => (
                       <Combobox.Option
                         key={item.id}
-                        value={item.business_name}
+                        value={item}
                         className={({ active }) =>
                           classNames(
                             'cursor-default select-none rounded-md px-4 py-2',
