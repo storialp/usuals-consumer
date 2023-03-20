@@ -9,11 +9,11 @@ const Program = () => {
   const [open, SetOpen] = useAtom(openSearchAtom)
   const [selectedProgram, setSelectedProgram] = useAtom(selectedProgramAtom)
   const router = useRouter()
-  // const joinProgram = async () => {
-  //   await supabase
-  //     .from('member_programs')
-  //     .insert([{ user_id: user }, { business_id: business.id }])
-  // }
+  const joinProgram = async () => {
+    await supabase
+      .from('member_programs')
+      .insert([{ user_id: user }, { business_id: selectedProgram.id }])
+  }
   return (
     !open &&
     selectedProgram && (
@@ -56,10 +56,10 @@ const Program = () => {
           <button
             type='button'
             className='inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-full shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 my-5'
-            // onClick={() => {
-            //   joinProgram()
-            //   router.push('/my-programs')
-            // }}
+            onClick={() => {
+              joinProgram()
+              router.push('/my-programs')
+            }}
           >
             Join Program
           </button>
