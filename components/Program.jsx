@@ -5,16 +5,16 @@ import { useAtom } from 'jotai'
 import { openSearchAtom, selectedProgramAtom } from '../pages/businesses'
 
 const Program = () => {
-  const user = useUser().id
+  const user = useUser()?.id
   const [open, SetOpen] = useAtom(openSearchAtom)
   const [selectedProgram, setSelectedProgram] = useAtom(selectedProgramAtom)
   const router = useRouter()
   const joinProgram = async () => {
-    selectedProgram &&
-      (await supabase
-        .from('member_programs')
-        .insert([{ user_id: user, business_id: selectedProgram.id }])
-        .single())
+    // selectedProgram &&
+    await supabase
+      .from('member_programs')
+      .insert([{ user_id: user, business_id: selectedProgram.id }])
+      .single()
   }
   return (
     !open &&
