@@ -5,7 +5,7 @@ import { useAtom } from 'jotai'
 import { openSearchAtom, selectedProgramAtom } from '../pages/businesses'
 
 const Program = () => {
-  // const user = useUser().id
+  const user = useUser().id
   const [open, SetOpen] = useAtom(openSearchAtom)
   const [selectedProgram, setSelectedProgram] = useAtom(selectedProgramAtom)
   const router = useRouter()
