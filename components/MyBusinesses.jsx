@@ -18,7 +18,8 @@ export const MyBusinesses = () => {
       .eq('user_id', user)
       .then((result) => {
         console.log(result)
-        setStamps(result.data.map((item) => item.stamps))
+        // setStamps(result.data.map((item) => item.stamps))
+        console.log(stamps)
         const businessesIds = result.data.map((item) => item.business_id)
         console.log(businessesIds)
         supabase
@@ -58,9 +59,9 @@ export const MyBusinesses = () => {
                     <p className='text-sm font-medium text-gray-900'>
                       {item.business_name}
                     </p>
-                    <p className='truncate text-sm text-gray-500'>
+                    {/* <p className='truncate text-sm text-gray-500'>
                       Your points: {stamps[item]}
-                    </p>
+                    </p> */}
                   </a>
                 </div>
               </div>
