@@ -7,16 +7,18 @@ import { useUser } from '@supabase/auth-helpers-react'
 export const MyBusinesses = () => {
   const user = useUser()?.id
   const [myPrograms, setMyPrograms] = useState([])
+  const [stamps, setStamps] = useState([])
   useEffect(() => {
     if (!user) {
       return
     }
     supabase
       .from('member_programs')
-      .select('business_id')
+      .select('business_id', 'stamps')
       .eq('user_id', user)
       .then((result) => {
         console.log(result)
+        setStamps(result.data.map((item) => item.stamps))
         const businessesIds = result.data.map((item) => item.business_id)
         console.log(businessesIds)
         supabase
@@ -57,7 +59,7 @@ export const MyBusinesses = () => {
                       {item.business_name}
                     </p>
                     <p className='truncate text-sm text-gray-500'>
-                      Your Points
+                      Your points: {stamps[item]}
                     </p>
                   </a>
                 </div>
