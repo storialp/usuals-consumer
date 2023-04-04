@@ -3,6 +3,7 @@ import { useRouter } from "next/router"
 import { useUser } from "@supabase/auth-helpers-react"
 import { useAtom } from "jotai"
 import { openSearchAtom, selectedProgramAtom } from "../pages/businesses"
+import Image from "next/image"
 
 const Program = () => {
   const user = useUser()?.id
@@ -21,7 +22,7 @@ const Program = () => {
       <div className="mt-5">
         <section aria-labelledby="program-heading" className="relative">
           <div className="aspect-w-3 aspect-h-2 overflow-hidden sm:aspect-w-5 lg:aspect-none lg:absolute lg:h-full lg:w-1/2 lg:pr-4 xl:pr-16">
-            <img
+            <Image
               src={selectedProgram.logo_url}
               alt="Business Logo"
               className="h-5/6 w-5/6 object-cover object-center lg:h-full lg:w-full mx-auto"

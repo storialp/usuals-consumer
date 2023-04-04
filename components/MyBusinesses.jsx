@@ -3,6 +3,7 @@ import YourUsualsBusinesses from "./YourUsualsBusinesses"
 import { PlusCircleIcon } from "@heroicons/react/24/outline"
 import { useState, useEffect } from "react"
 import { useUser } from "@supabase/auth-helpers-react"
+import Image from "next/image"
 
 export const MyBusinesses = () => {
   const user = useUser()?.id
@@ -41,7 +42,7 @@ export const MyBusinesses = () => {
                 key={item.id}
               >
                 <div className="flex-shrink-0">
-                  <img
+                  <Image
                     className="h-10 w-10 rounded-full"
                     src={item.logo_url}
                     alt={item.business_name}
