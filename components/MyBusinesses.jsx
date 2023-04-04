@@ -44,7 +44,10 @@ export const MyBusinesses = () => {
                 <div className="flex-shrink-0">
                   <Image
                     className="h-10 w-10 rounded-full"
-                    src={item.logo_url}
+                    src={
+                      item.logo_url ||
+                      "https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/icon+(2).png"
+                    }
                     alt={item.business_name}
                   />
                 </div>
