@@ -11,6 +11,7 @@ const Program = () => {
   const [selectedProgram, setSelectedProgram] = useAtom(selectedProgramAtom)
   const router = useRouter()
   const joinProgram = async () => {
+    console.log(selectedProgram)
     await supabase
       .from("profiles_businesses")
       .insert([{ user_id: user, business_id: selectedProgram?.id }])

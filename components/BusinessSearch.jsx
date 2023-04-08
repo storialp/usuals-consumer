@@ -1,12 +1,12 @@
-import { Fragment, useState, useEffect } from 'react'
-import { BuildingStorefrontIcon } from '@heroicons/react/24/outline'
-import { Combobox, Dialog, Transition } from '@headlessui/react'
-import { supabase } from '../client'
+import { Fragment, useState, useEffect } from "react"
+import { BuildingStorefrontIcon } from "@heroicons/react/24/outline"
+import { Combobox, Dialog, Transition } from "@headlessui/react"
+import { supabase } from "../client"
 import {
   openSearchAtom,
   selectedProgramAtom,
-} from '@component/pages/businesses'
-import { useAtom } from 'jotai/react'
+} from "@component/pages/businesses"
+import { useAtom } from "jotai/react"
 
 // const people = [
 //   { id: 1, name: 'Leslie Alexander', url: '#' },
@@ -14,11 +14,11 @@ import { useAtom } from 'jotai/react'
 // ]
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(" ")
 }
 
 export default function BusinessSearch(props) {
-  const [query, setQuery] = useState('')
+  const [query, setQuery] = useState("")
   const [open, setOpen] = useAtom(openSearchAtom)
   const [businessList, setBusinessList] = useState([])
   const [selectedProgram, setSelectedProgram] = useAtom(selectedProgramAtom)
@@ -27,9 +27,9 @@ export default function BusinessSearch(props) {
     query.length < 3
       ? []
       : supabase
-          .from('businesses')
+          .from("businesses")
           .select()
-          .textSearch('business_name', query)
+          .textSearch("business_name", query)
           .then((result) => {
             console.log(result.data)
             setBusinessList(result.data)
@@ -40,42 +40,43 @@ export default function BusinessSearch(props) {
     <Transition.Root
       show={open}
       as={Fragment}
-      afterLeave={() => setQuery('')}
+      afterLeave={() => setQuery("")}
       appear
     >
-      <Dialog as='div' className='relative z-10' onClose={setOpen}>
+      <Dialog as="div" className="relative z-10" onClose={setOpen}>
         <Transition.Child
           as={Fragment}
-          enter='ease-out duration-300'
-          enterFrom='opacity-0'
-          enterTo='opacity-100'
-          leave='ease-in duration-200'
-          leaveFrom='opacity-100'
-          leaveTo='opacity-0'
+          enter="ease-out duration-300"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="ease-in duration-200"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
         >
-          <div className='fixed inset-0 bg-gray-500 bg-opacity-25 transition-opacity' />
+          <div className="fixed inset-0 bg-gray-500 bg-opacity-25 transition-opacity" />
         </Transition.Child>
 
-        <div className='fixed inset-0 z-10 overflow-y-auto p-4 sm:p-6 md:p-20'>
+        <div className="fixed inset-0 z-10 overflow-y-auto p-4 sm:p-6 md:p-20">
           <Transition.Child
             as={Fragment}
-            enter='ease-out duration-300'
-            enterFrom='opacity-0 scale-95'
-            enterTo='opacity-100 scale-100'
-            leave='ease-in duration-200'
-            leaveFrom='opacity-100 scale-100'
-            leaveTo='opacity-0 scale-95'
+            enter="ease-out duration-300"
+            enterFrom="opacity-0 scale-95"
+            enterTo="opacity-100 scale-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100 scale-100"
+            leaveTo="opacity-0 scale-95"
           >
-            <Dialog.Panel className='mx-auto max-w-xl transform rounded-xl bg-white p-2 shadow-2xl ring-1 ring-black ring-opacity-5 transition-all'>
+            <Dialog.Panel className="mx-auto max-w-xl transform rounded-xl bg-white p-2 shadow-2xl ring-1 ring-black ring-opacity-5 transition-all">
               <Combobox
                 onChange={(business) => {
+                  console.log(business)
                   setSelectedProgram(business)
                   setOpen(false)
                 }}
               >
                 <Combobox.Input
-                  className='w-full rounded-md border-0 bg-gray-100 px-4 py-2.5 text-gray-900 focus:ring-0 sm:text-sm'
-                  placeholder='Search...'
+                  className="w-full rounded-md border-0 bg-gray-100 px-4 py-2.5 text-gray-900 focus:ring-0 sm:text-sm"
+                  placeholder="Search..."
                   onChange={(event) => {
                     setQuery(event.target.value)
                     console.log(query)
@@ -85,7 +86,7 @@ export default function BusinessSearch(props) {
                 {businessList.length > 0 && (
                   <Combobox.Options
                     static
-                    className='-mb-2 max-h-72 scroll-py-2 overflow-y-auto py-2 text-sm text-gray-800'
+                    className="-mb-2 max-h-72 scroll-py-2 overflow-y-auto py-2 text-sm text-gray-800"
                   >
                     {businessList.map((item) => (
                       <Combobox.Option
@@ -93,8 +94,8 @@ export default function BusinessSearch(props) {
                         value={item}
                         className={({ active }) =>
                           classNames(
-                            'cursor-default select-none rounded-md px-4 py-2',
-                            active && 'bg-blue-600 text-white'
+                            "cursor-default select-none rounded-md px-4 py-2",
+                            active && "bg-blue-600 text-white"
                           )
                         }
                       >
@@ -104,16 +105,16 @@ export default function BusinessSearch(props) {
                   </Combobox.Options>
                 )}
 
-                {query !== '' && businessList.length === 0 && (
-                  <div className='py-14 px-4 text-center sm:px-14'>
+                {query !== "" && businessList.length === 0 && (
+                  <div className="py-14 px-4 text-center sm:px-14">
                     <BuildingStorefrontIcon
-                      className='mx-auto h-6 w-6 text-gray-400'
-                      aria-hidden='true'
+                      className="mx-auto h-6 w-6 text-gray-400"
+                      aria-hidden="true"
                     />
-                    <p className='mt-4 text-sm text-gray-900'>
+                    <p className="mt-4 text-sm text-gray-900">
                       No businesses found using that search term.
                     </p>
-                    <p className='mt-4 text-sm text-gray-900'>
+                    <p className="mt-4 text-sm text-gray-900">
                       Try typing the first word.
                     </p>
                   </div>
