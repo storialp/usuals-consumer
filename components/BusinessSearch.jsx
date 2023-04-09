@@ -3,6 +3,7 @@ import { BuildingStorefrontIcon } from "@heroicons/react/24/outline"
 import { Combobox, Dialog, Transition } from "@headlessui/react"
 import { supabase } from "../client"
 import { useAtom } from "jotai/react"
+import { openSearchAtom } from "../pages/businesses"
 import { useRouter } from "next/router"
 
 // const people = [
@@ -16,7 +17,7 @@ function classNames(...classes) {
 
 export default function BusinessSearch(props) {
   const [query, setQuery] = useState("")
-  const [open, setOpen] = useAtom(openSearchAtom)
+  const [openSearch, setOpenSearch] = useAtom(openSearchAtom)
   const [businessList, setBusinessList] = useState([])
   const router = useRouter()
   useEffect(() => {
@@ -34,8 +35,8 @@ export default function BusinessSearch(props) {
 
   return (
     <Transition.Root
-      show={open}
-      as={Fragment}
+      show={openSearch}
+      asSearch={Fragment}
       afterLeave={() => setQuery("")}
       appear
     >
@@ -67,7 +68,7 @@ export default function BusinessSearch(props) {
                 onChange={(business) => {
                   console.log(business)
                   router.push(`/businesses/${business.id}`)
-                  setOpen(false)
+                  setOpenSearch(false)
                 }}
               >
                 <Combobox.Input

@@ -3,8 +3,10 @@ import { Inter } from "next/font/google"
 import NavBar from "../../components/NavBar"
 import BusinessSearch from "../../components/BusinessSearch"
 import FakeSearchBar from "../../components/FakeSearchBar"
+import { atom } from "jotai"
 
 const inter = Inter({ subsets: ["latin"] })
+export const openSearchAtom = atom(true)
 
 export default function Home() {
   return (
@@ -17,8 +19,7 @@ export default function Home() {
       </Head>
       {/* {session ? <NavBar /> : <SignUp />} */}
       <NavBar />
-      <FakeSearchBar />
-      <BusinessSearch />
+      {!openSearch ? <FakeSearchBar /> : <BusinessSearch />}
     </>
   )
 }
