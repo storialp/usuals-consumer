@@ -1,7 +1,7 @@
 import Head from "next/head"
 import { Inter } from "next/font/google"
 import NavBar from "../../components/NavBar"
-import ProgramSSR from "../../components/ProgramSSR"
+import Program from "../../components/Program"
 import { useRouter } from "next/router"
 import { useState, useEffect } from "react"
 import { supabase } from "../../client"
@@ -40,7 +40,7 @@ export default function Home() {
       </Head>
       {/* {session ? <NavBar /> : <SignUp />} */}
       <NavBar />
-      <ProgramSSR businessData={businessData} />
+      <Program businessData={businessData} />
     </>
   )
 }

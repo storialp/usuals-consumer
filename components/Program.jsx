@@ -3,7 +3,7 @@ import { useRouter } from "next/router"
 import { useUser } from "@supabase/auth-helpers-react"
 import Image from "next/image"
 
-const ProgramSSR = ({ businessData }) => {
+const Program = ({ businessData }) => {
   const user = useUser()?.id
   const router = useRouter()
   const joinProgram = async () => {
@@ -72,4 +72,4 @@ const ProgramSSR = ({ businessData }) => {
   //   )
 }
 
-export default ProgramSSR
+export default Program
