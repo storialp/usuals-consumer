@@ -51,16 +51,14 @@ export const MyBusinesses = () => {
                     />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <a href="#" className="focus:outline-none">
-                      <span className="absolute inset-0" aria-hidden="true" />
-                      <p className="text-sm font-medium text-gray-900">
-                        {item.business_name}
-                      </p>
-                      <p className="truncate text-sm text-gray-500">
-                        Your stamps: {item.profiles_businesses[0].stamps}/
-                        {item.stamps_needed}
-                      </p>
-                    </a>
+                    <span className="absolute inset-0" aria-hidden="true" />
+                    <p className="text-sm font-medium text-gray-900">
+                      {item.business_name}
+                    </p>
+                    <p className="truncate text-sm text-gray-500">
+                      Your stamps: {item.profiles_businesses[0].stamps}/
+                      {item.stamps_needed}
+                    </p>
                   </div>
                 </div>
               </Link>
