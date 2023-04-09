@@ -2,10 +2,6 @@ import { Fragment, useState, useEffect } from "react"
 import { BuildingStorefrontIcon } from "@heroicons/react/24/outline"
 import { Combobox, Dialog, Transition } from "@headlessui/react"
 import { supabase } from "../client"
-import {
-  openSearchAtom,
-  selectedProgramAtom,
-} from "@component/pages/businesses"
 import { useAtom } from "jotai/react"
 import { useRouter } from "next/router"
 

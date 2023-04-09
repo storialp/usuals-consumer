@@ -1,5 +1,5 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline"
-import { openSearchAtom } from "@component/pages/businesses"
+import { openSearchAtom } from "../pages/businesses"
 import { useAtom } from "jotai/react"
 
 // adding comment to stop git complaining

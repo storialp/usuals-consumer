@@ -1,4 +1,4 @@
-import { supabase } from "@component/client"
+import { supabase } from "../client"
 import YourUsualsBusinesses from "./YourUsualsBusinesses"
 import { PlusCircleIcon } from "@heroicons/react/24/outline"
 import { useState, useEffect } from "react"
@@ -57,7 +57,7 @@ export const MyBusinesses = () => {
                         {item.business_name}
                       </p>
                       <p className="truncate text-sm text-gray-500">
-                        Your points: {item.profiles_businesses[0].stamps}/
+                        Your stamps: {item.profiles_businesses[0].stamps}/
                         {item.stamps_needed}
                       </p>
                     </a>

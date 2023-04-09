@@ -1,14 +1,12 @@
 import Head from "next/head"
 import { Inter } from "next/font/google"
-import NavBar from "@component/components/NavBar"
-import { atom } from "jotai"
+import NavBar from "../components/NavBar"
 import ProgramSSR from "../../components/ProgramSSR"
 import { useRouter } from "next/router"
 import { useState, useEffect } from "react"
 import { supabase } from "../../client"
 
 const inter = Inter({ subsets: ["latin"] })
-export const openSearchAtom = atom(true)
 
 export default function Home() {
   const router = useRouter()

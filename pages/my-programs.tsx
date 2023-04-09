@@ -1,9 +1,9 @@
 import Head from "next/head"
 import { Inter } from "next/font/google"
 import { useSession } from "@supabase/auth-helpers-react"
-import NavBar from "@component/components/NavBar"
+import NavBar from "../components/NavBar"
 import SignUp from "../components/SignUp"
-import { MyBusinesses } from "@component/components/MyBusinesses"
+import { MyBusinesses } from "../components/MyBusinesses"
 import { atom } from "jotai"
 
 const inter = Inter({ subsets: ["latin"] })
