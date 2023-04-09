@@ -1,6 +1,6 @@
 import Head from "next/head"
 import { Inter } from "next/font/google"
-import NavBar from "../components/NavBar"
+import NavBar from "../../components/NavBar"
 import ProgramSSR from "../../components/ProgramSSR"
 import { useRouter } from "next/router"
 import { useState, useEffect } from "react"
