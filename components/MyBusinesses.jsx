@@ -4,7 +4,6 @@ import { PlusCircleIcon } from "@heroicons/react/24/outline"
 import { useState, useEffect } from "react"
 import { useUser } from "@supabase/auth-helpers-react"
 import Image from "next/image"
-import { useRouter } from "next/router"
 import Link from "next/link"
 
 export const MyBusinesses = () => {
@@ -39,11 +38,8 @@ export const MyBusinesses = () => {
         <div className="bg-white py-8 px-10 shadow rounded-lg">
           <div className="grid grid-cols-1 gap-4 ">
             {myPrograms.map((item) => (
-              <div
-                className="relative flex items-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2 hover:border-gray-400"
-                key={item.id}
-              >
-                <Link href={item.id}>
+              <Link href={`/businesses/${item.id}`} key={item.id}>
+                <div className="relative flex items-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2 hover:border-gray-400">
                   <div className="flex-shrink-0">
                     <Image
                       className="h-10 w-10 rounded-full"
@@ -66,8 +62,8 @@ export const MyBusinesses = () => {
                       </p>
                     </a>
                   </div>
-                </Link>
-              </div>
+                </div>
+              </Link>
             ))}
           </div>
           <a href=" /businesses">
