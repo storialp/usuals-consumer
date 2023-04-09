@@ -40,7 +40,7 @@ export default function BusinessSearch() {
       afterLeave={() => setQuery("")}
       appear
     >
-      <Dialog as="div" className="relative z-10" onClose={setOpen}>
+      <Dialog as="div" className="relative z-10" onClose={setOpenSearch}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
