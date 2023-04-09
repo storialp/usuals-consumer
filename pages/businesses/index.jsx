@@ -1,15 +1,16 @@
 import Head from "next/head"
 import { Inter } from "next/font/google"
-import { useSession } from "@supabase/auth-helpers-react"
 import NavBar from "@component/components/NavBar"
-import SignUp from "../components/SignUp"
-import { MyBusinesses } from "@component/components/MyBusinesses"
-import { atom } from "jotai"
+import BusinessSearch from "@component/components/BusinessSearch"
+import { atom, useAtom } from "jotai"
+import FakeSearchBar from "../../components/FakeSearchBar"
+import Program from "../../components/Program"
 
 const inter = Inter({ subsets: ["latin"] })
+export const openSearchAtom = atom(true)
+export const selectedProgramAtom = atom("")
 
 export default function Home() {
-  const session = useSession()
   return (
     <>
       <Head>
@@ -20,7 +21,9 @@ export default function Home() {
       </Head>
       {/* {session ? <NavBar /> : <SignUp />} */}
       <NavBar />
-      <MyBusinesses />
+      <FakeSearchBar />
+      <Program />
+      <BusinessSearch />
     </>
   )
 }

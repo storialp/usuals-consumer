@@ -4,6 +4,8 @@ import { PlusCircleIcon } from "@heroicons/react/24/outline"
 import { useState, useEffect } from "react"
 import { useUser } from "@supabase/auth-helpers-react"
 import Image from "next/image"
+import { useRouter } from "next/router"
+import Link from "next/link"
 
 export const MyBusinesses = () => {
   const user = useUser()?.id
@@ -41,28 +43,30 @@ export const MyBusinesses = () => {
                 className="relative flex items-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2 hover:border-gray-400"
                 key={item.id}
               >
-                <div className="flex-shrink-0">
-                  <Image
-                    className="h-10 w-10 rounded-full"
-                    src={
-                      item.logo_url ||
-                      "https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/icon+(2).png"
-                    }
-                    alt={item.business_name}
-                  />
-                </div>
-                <div className="min-w-0 flex-1">
-                  <a href="#" className="focus:outline-none">
-                    <span className="absolute inset-0" aria-hidden="true" />
-                    <p className="text-sm font-medium text-gray-900">
-                      {item.business_name}
-                    </p>
-                    <p className="truncate text-sm text-gray-500">
-                      Your points: {item.profiles_businesses[0].stamps}/
-                      {item.stamps_needed}
-                    </p>
-                  </a>
-                </div>
+                <Link href={item.id}>
+                  <div className="flex-shrink-0">
+                    <Image
+                      className="h-10 w-10 rounded-full"
+                      src={
+                        item.logo_url ||
+                        "https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/icon+(2).png"
+                      }
+                      alt={item.business_name}
+                    />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <a href="#" className="focus:outline-none">
+                      <span className="absolute inset-0" aria-hidden="true" />
+                      <p className="text-sm font-medium text-gray-900">
+                        {item.business_name}
+                      </p>
+                      <p className="truncate text-sm text-gray-500">
+                        Your points: {item.profiles_businesses[0].stamps}/
+                        {item.stamps_needed}
+                      </p>
+                    </a>
+                  </div>
+                </Link>
               </div>
             ))}
           </div>
