@@ -7,6 +7,7 @@ import {
   selectedProgramAtom,
 } from "@component/pages/businesses"
 import { useAtom } from "jotai/react"
+import { useRouter } from "next/router"
 
 // const people = [
 //   { id: 1, name: 'Leslie Alexander', url: '#' },
@@ -21,8 +22,7 @@ export default function BusinessSearch(props) {
   const [query, setQuery] = useState("")
   const [open, setOpen] = useAtom(openSearchAtom)
   const [businessList, setBusinessList] = useState([])
-  const [selectedProgram, setSelectedProgram] = useAtom(selectedProgramAtom)
-
+  const router = useRouter()
   useEffect(() => {
     query.length < 3
       ? []
@@ -70,7 +70,7 @@ export default function BusinessSearch(props) {
               <Combobox
                 onChange={(business) => {
                   console.log(business)
-                  setSelectedProgram(business)
+                  router.push(`/businesses/${business.id}`)
                   setOpen(false)
                 }}
               >

@@ -4,7 +4,6 @@ import NavBar from "@component/components/NavBar"
 import BusinessSearch from "@component/components/BusinessSearch"
 import { atom, useAtom } from "jotai"
 import FakeSearchBar from "../../components/FakeSearchBar"
-import Program from "../../components/Program"
 
 const inter = Inter({ subsets: ["latin"] })
 export const openSearchAtom = atom(true)
@@ -22,7 +21,6 @@ export default function Home() {
       {/* {session ? <NavBar /> : <SignUp />} */}
       <NavBar />
       <FakeSearchBar />
-      <Program />
       <BusinessSearch />
     </>
   )

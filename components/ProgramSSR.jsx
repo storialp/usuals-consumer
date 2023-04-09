@@ -1,11 +1,17 @@
 import { supabase } from "../client"
 import { useRouter } from "next/router"
 import { useUser } from "@supabase/auth-helpers-react"
-import { useAtom } from "jotai"
-import { openSearchAtom, selectedProgramAtom } from "../pages/businesses"
 import Image from "next/image"
 
 const ProgramSSR = ({ businessData }) => {
+  const user = useUser()?.id
+  const router = useRouter()
+  const joinProgram = async () => {
+    await supabase
+      .from("profiles_businesses")
+      .insert([{ user_id: user, business_id: businessData.id }])
+  }
+
   return (
     businessData && (
       <div className="mt-5">
@@ -17,7 +23,7 @@ const ProgramSSR = ({ businessData }) => {
                 "https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/icon+(2).png"
               }
               alt="Business Logo"
-              className="object-center mx-auto w-5/6 h-5/6"
+              className="object-center mx-auto w-5/6 h-5/6 object-cover lg:h-full lg:w-full"
               fill
             />
           </div>
@@ -47,8 +53,9 @@ const ProgramSSR = ({ businessData }) => {
             </div>
           </div>
         </section>
+
         <div className="relative ml-3 flex justify-center">
-          {/* <button
+          <button
             type="button"
             className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-full shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 my-5"
             onClick={() => {
@@ -57,7 +64,7 @@ const ProgramSSR = ({ businessData }) => {
             }}
           >
             Join Program
-          </button> */}
+          </button>
         </div>
       </div>
     )

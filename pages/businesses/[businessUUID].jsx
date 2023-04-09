@@ -9,7 +9,6 @@ import { supabase } from "../../client"
 
 const inter = Inter({ subsets: ["latin"] })
 export const openSearchAtom = atom(true)
-export const selectedProgramAtom = atom("")
 
 export default function Home() {
   const router = useRouter()
