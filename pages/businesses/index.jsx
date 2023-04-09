@@ -19,7 +19,8 @@ export default function Home() {
       </Head>
       {/* {session ? <NavBar /> : <SignUp />} */}
       <NavBar />
-      {!openSearch ? <FakeSearchBar /> : <BusinessSearch />}
+      <FakeSearchBar />
+      <BusinessSearch />
     </>
   )
 }

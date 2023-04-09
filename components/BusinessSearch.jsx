@@ -15,7 +15,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ")
 }
 
-export default function BusinessSearch(props) {
+export default function BusinessSearch() {
   const [query, setQuery] = useState("")
   const [openSearch, setOpenSearch] = useAtom(openSearchAtom)
   const [businessList, setBusinessList] = useState([])
