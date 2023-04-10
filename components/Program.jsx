@@ -1,17 +1,21 @@
 import { supabase } from "../client"
 import { useRouter } from "next/router"
-import { useUser } from "@supabase/auth-helpers-react"
 import Image from "next/image"
 
-const Program = ({ businessData }) => {
-  const user = useUser()?.id
+const Program = ({ businessData, user, stamps }) => {
   const router = useRouter()
   const joinProgram = async () => {
     await supabase
       .from("profiles_businesses")
       .insert([{ user_id: user, business_id: businessData.id }])
   }
-
+  const leaveProgram = async () => {
+    await supabase
+      .from("profiles_businesses")
+      .delete()
+      .eq("business_id", businessData.id)
+      .eq("user_id", user)
+  }
   return (
     businessData && (
       <div className="mt-5">
@@ -38,6 +42,15 @@ const Program = ({ businessData }) => {
               <p className="mt-4 text-gray-500">
                 {businessData.business_description}
               </p>
+              <p className="mt-4 text-gray-500">
+                You need: {businessData.stamps_needed} stamps
+              </p>
+              <p className="mt-4 text-gray-500">
+                To get {businessData.reward_name}
+              </p>
+              {stamps !== null && (
+                <p className="mt-4 text-gray-500">You have: {stamps} stamps</p>
+              )}
               {/* <dl className='mt-10 grid grid-cols-1 gap-y-10 gap-x-8 text-sm sm:grid-cols-2'>
                 {features.map((feature) => (
                   <div key={feature.name}>
@@ -55,16 +68,29 @@ const Program = ({ businessData }) => {
         </section>
 
         <div className="relative ml-3 flex justify-center">
-          <button
-            type="button"
-            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-full shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 my-5"
-            onClick={() => {
-              joinProgram()
-              router.push("/my-programs")
-            }}
-          >
-            Join Program
-          </button>
+          {stamps !== null ? (
+            <button
+              type="button"
+              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-full shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 my-5"
+              onClick={() => {
+                leaveProgram()
+                router.push("/my-programs")
+              }}
+            >
+              Leave Program
+            </button>
+          ) : (
+            <button
+              type="button"
+              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-full shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 my-5"
+              onClick={() => {
+                joinProgram()
+                router.push("/my-programs")
+              }}
+            >
+              Join Program
+            </button>
+          )}
         </div>
       </div>
     )

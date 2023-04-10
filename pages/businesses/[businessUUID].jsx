@@ -5,11 +5,14 @@ import Program from "../../components/Program"
 import { useRouter } from "next/router"
 import { useState, useEffect } from "react"
 import { supabase } from "../../client"
+import { useUser } from "@supabase/auth-helpers-react"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export default function Home() {
+  const user = useUser()?.id
   const router = useRouter()
+  const [stamps, setStamps] = useState(null)
   if (router.query.businessUUID) {
     console.log(router.query.businessUUID)
   }
@@ -27,8 +30,19 @@ export default function Home() {
             setBusinessData(result.data)
           }
         })
+      supabase
+        .from("profiles_businesses")
+        .select("stamps")
+        .eq("business_id", router.query.businessUUID)
+        .eq("user_id", user)
+        .single()
+        .then((result) => {
+          if (result.data) {
+            setStamps(result.data.stamps)
+          }
+        })
     }
-  }, [router.query.businessUUID])
+  }, [router.query.businessUUID, user])
 
   return (
     <>
@@ -40,7 +54,7 @@ export default function Home() {
       </Head>
       {/* {session ? <NavBar /> : <SignUp />} */}
       <NavBar />
-      <Program businessData={businessData} />
+      <Program businessData={businessData} user={user} stamps={stamps} />
     </>
   )
 }
