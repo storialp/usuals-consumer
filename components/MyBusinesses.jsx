@@ -59,20 +59,20 @@ export const MyBusinesses = () => {
                       Your stamps: {item.profiles_businesses[0].stamps}/
                       {item.stamps_needed}
                     </p>
-                    <div className="flex w-full">
-                      <div class="w-full bg-gray-200 rounded-full h-2.5 ">
-                        <div
-                          class="bg-blue-600 h-2.5 rounded-full"
-                          style={{
-                            width: `${
-                              (item.profiles_businesses[0].stamps /
-                                item.stamps_needed) *
-                              100
-                            }%`,
-                          }}
-                        ></div>
-                        <GiftIcon className="h-2.5 w-auto" />
-                      </div>
+                    {/* <div className="flex w-full"> */}
+                    <div class="w-full bg-gray-200 rounded-full h-2.5 ">
+                      <div
+                        class="bg-blue-600 h-2.5 rounded-full"
+                        style={{
+                          width: `${
+                            (item.profiles_businesses[0].stamps /
+                              item.stamps_needed) *
+                            100
+                          }%`,
+                        }}
+                      ></div>
+                      <GiftIcon className="h-2.5 w-auto" />
+                      {/* </div> */}
                     </div>
                   </div>
                 </div>
