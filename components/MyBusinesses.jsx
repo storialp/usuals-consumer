@@ -60,7 +60,7 @@ export const MyBusinesses = () => {
                       {item.stamps_needed}
                     </p>
                     {/* <div className="flex w-full"> */}
-                    <div class="w-full bg-gray-200 rounded-full h-2.5 ">
+                    <div class="w-3/4 bg-gray-200 rounded-full h-2.5 ">
                       <div
                         class="bg-blue-600 h-2.5 rounded-full"
                         style={{
@@ -71,7 +71,7 @@ export const MyBusinesses = () => {
                           }%`,
                         }}
                       ></div>
-                      <GiftIcon className="h-2.5 w-auto" />
+                      <GiftIcon className="h-5 w-auto" />
                       {/* </div> */}
                     </div>
                   </div>
