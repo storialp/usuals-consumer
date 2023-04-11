@@ -60,9 +60,9 @@ export const MyBusinesses = () => {
                       {item.stamps_needed}
                     </p>
                     <div className="w-full flex flex-row relative items-center">
-                      <div class="w-5/6 bg-gray-200 rounded-full h-2.5">
+                      <div class="w-5/6 bg-gray-200 rounded-full h-4">
                         <div
-                          class="bg-blue-600 h-2.5 rounded-full"
+                          class="bg-blue-600 h-4 rounded-full"
                           style={{
                             width: `${
                               (item.profiles_businesses[0].stamps /
