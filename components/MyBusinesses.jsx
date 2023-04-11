@@ -7,7 +7,7 @@ import Image from "next/image"
 import Link from "next/link"
 
 export const MyBusinesses = () => {
-  const user = useUser()?.id
+  const user = "51c720e7-8b8f-4cdd-b6a7-bf58f72d4d7e"
   const [myPrograms, setMyPrograms] = useState([])
   useEffect(() => {
     if (!user) {

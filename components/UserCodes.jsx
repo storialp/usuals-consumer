@@ -5,7 +5,7 @@ import ReactBarcode from "./ReactBarCode"
 import YourUsualsCard from "./YourUsualsCard"
 
 export const UserCodes = () => {
-  const user = useUser()?.id
+  const user = "51c720e7-8b8f-4cdd-b6a7-bf58f72d4d7e"
   console.log(user)
   // const translator = short(
   //   '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
