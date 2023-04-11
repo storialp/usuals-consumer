@@ -40,16 +40,16 @@ export const MyBusinesses = () => {
             {myPrograms.map((item) => (
               <Link href={`/businesses/${item.id}`} key={item.id}>
                 <div className="relative flex items-center space-x-3 rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2 hover:border-gray-400">
-                  {/* <div className="flex-shrink-0"> */}
-                  <Image
-                    className="h-10 w-10 rounded-full object-cover"
-                    src={
-                      item.logo_url ||
-                      "https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/icon+(2).png"
-                    }
-                    alt={item.business_name}
-                  />
-                  {/* </div> */}
+                  <div className="flex-shrink-0">
+                    <Image
+                      className="h-10 w-10 rounded-full object-cover"
+                      src={
+                        item.logo_url ||
+                        "https://personal-website-pics-2.s3.eu-central-1.amazonaws.com/icon+(2).png"
+                      }
+                      alt={item.business_name}
+                    />
+                  </div>
                   <div className="min-w-0 flex-1">
                     <span className="absolute inset-0" aria-hidden="true" />
                     <p className="text-sm font-medium text-gray-900">
@@ -59,24 +59,22 @@ export const MyBusinesses = () => {
                       Your stamps: {item.profiles_businesses[0].stamps}/
                       {item.stamps_needed}
                     </p>
-                    <div className="flex-row flex w-full relative">
-                      <div class="w-5/6 bg-gray-200 rounded-full h-2.5">
-                        <div
-                          class="bg-blue-600 h-2.5 rounded-full"
-                          style={{
-                            width: `${
-                              (item.profiles_businesses[0].stamps /
-                                item.stamps_needed) *
-                              100
-                            }%`,
-                          }}
-                        ></div>
-                        <p>hi</p>
-                        <div>
-                          <GiftIcon className="h-5 w-auto" />
-                        </div>
-                      </div>
+                    {/* <div className="flex-row flex w-full relative"> */}
+                    <div class="w-5/6 bg-gray-200 rounded-full h-2.5">
+                      <div
+                        class="bg-blue-600 h-2.5 rounded-full"
+                        style={{
+                          width: `${
+                            (item.profiles_businesses[0].stamps /
+                              item.stamps_needed) *
+                            100
+                          }%`,
+                        }}
+                      ></div>
+                      <p>hi</p>
+                      <GiftIcon className="h-5 w-auto" />
                     </div>
+                    {/* </div> */}
                   </div>
                 </div>
               </Link>
