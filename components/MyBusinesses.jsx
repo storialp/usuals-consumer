@@ -66,7 +66,7 @@ export const MyBusinesses = () => {
                           (item.profiles_businesses[0].stamps /
                             item.stamps_needed) *
                           100
-                        }%"`}
+                        }%`}
                       ></div>
                     </div>
                   </div>
