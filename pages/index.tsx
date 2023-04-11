@@ -9,7 +9,7 @@ import { useRouter } from "next/router"
 const inter = Inter({ subsets: ["latin"] })
 
 export default function Home() {
-  const user = useUser()
+  const user = "51c720e7-8b8f-4cdd-b6a7-bf58f72d4d7e"
   return (
     <>
       <Head>
