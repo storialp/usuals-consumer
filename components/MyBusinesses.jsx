@@ -71,7 +71,9 @@ export const MyBusinesses = () => {
                             }%`,
                           }}
                         ></div>
-                        <GiftIcon className="h-5 w-auto" />
+                        <div>
+                          <GiftIcon className="h-5 w-auto" />
+                        </div>
                       </div>
                     </div>
                   </div>
