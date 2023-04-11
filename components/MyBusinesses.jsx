@@ -60,7 +60,7 @@ export const MyBusinesses = () => {
                       Your stamps: {item.profiles_businesses[0].stamps}/
                       {item.stamps_needed}
                     </p>
-                    <div className="flex flex-col relative flex-shrink-0">
+                    <div className="flex flex-row relative flex-shrink-0">
                       <div class="w-5/6 bg-gray-200 rounded-full h-2.5">
                         <div
                           class="bg-blue-600 h-2.5 rounded-full"
