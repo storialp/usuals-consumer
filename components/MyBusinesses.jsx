@@ -60,7 +60,7 @@ export const MyBusinesses = () => {
                       {item.stamps_needed}
                     </p>
                     <div className="w-full flex flex-row relative">
-                      <div class="w-5/6 bg-gray-200 rounded-full h-2.5">
+                      <div class="w-5/6 bg-gray-200 rounded-full h-5">
                         <div
                           class="bg-blue-600 h-2.5 rounded-full"
                           style={{
