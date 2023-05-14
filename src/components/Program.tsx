@@ -3,7 +3,7 @@ import { useRouter } from "next/router"
 import Image from "next/image"
 import RewardsList from "./RewardsList"
 import { Business } from "~/app/types/types"
-import createServerClient from "~/utils/supabase-server"
+import { useSupabase } from "~/providers/supabase-provider"
 
 const Program = async (props: {
   businessData: Business
@@ -11,7 +11,7 @@ const Program = async (props: {
   stamps: number | null
 }) => {
   const { businessData, user, stamps } = props
-  const supabase = createServerClient()
+  const { supabase } = useSupabase()
   const router = useRouter()
   if (!businessData.id) {
     return <h1>Something went wrong</h1>
