@@ -15,7 +15,7 @@ export default function SignUp() {
       provider: "google",
       options: {
         redirectTo:
-          "https://usuals-consumer-web-git-app-router-storialp.vercel.app/",
+          "https://usuals-consumer-web-git-app-router-storialp.vercel.app",
       },
     })
   }
