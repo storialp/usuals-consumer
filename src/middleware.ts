@@ -12,7 +12,7 @@ export async function middleware(req: NextRequest) {
     data: { session },
   } = await supabase.auth.getSession()
   if (req.nextUrl.pathname.startsWith("/_next/")) {
-    return true
+    return res
   }
   if (!session?.user.id && req.nextUrl.pathname !== "/sign-up") {
     return NextResponse.redirect(`${req.nextUrl.origin}/sign-up`)
