@@ -1,15 +1,15 @@
 import Head from "next/head"
 import { Inter } from "next/font/google"
-import { UserCodes } from "../components/UserCodes"
-import NavBar from "../components/NavBar"
-import { supabase } from "../../supabase"
+import NavBar from "~/components/NavBar"
+import { UserPrograms } from "~/components/UserPrograms"
+import { supabase } from "~/../supabase"
+
 const inter = Inter({ subsets: ["latin"] })
 
 export default async function Home() {
   const {
     data: { session },
   } = await supabase.auth.getSession()
-
   return (
     <>
       <Head>
@@ -19,7 +19,7 @@ export default async function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavBar />
-      {session && <UserCodes user={session.user.id} />}
+      {session && <UserPrograms user={session.user.id} />}
     </>
   )
 }
