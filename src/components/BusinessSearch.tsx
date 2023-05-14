@@ -21,22 +21,22 @@ export default function BusinessSearch({
   const [query, setQuery] = useState("")
   const [businessList, setBusinessList] = useState<Business[]>([])
   const router = useRouter()
-  async function getBusinesses(query: string) {
-    const { data, error } = await supabase
-      .from("businesses")
-      .select()
-      .textSearch("business_name", query)
-    if (data) {
-      setBusinessList(data)
-      console.log(data)
-      return data
-    }
-    if (error) {
-      console.error(error)
-    }
-  }
+
   useEffect(() => {
-    query.length < 3 && getBusinesses(query)
+    async function getBusinesses() {
+      console.log("useeffect ran")
+      const { data, error } = await supabase
+        .from("businesses")
+        .select()
+        .textSearch("business_name", query)
+      if (data) {
+        setBusinessList(data)
+      }
+      if (error) {
+        console.error(error)
+      }
+    }
+    getBusinesses()
   }, [query])
 
   return (

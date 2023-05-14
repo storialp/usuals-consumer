@@ -26,8 +26,8 @@ export const UserCodes: React.FC<{ user: string }> = ({ user }) => {
           <ReactBarcode value={user} className="w-full" />
           {/* <QRCodeSVG value={shortID} className='mx-auto' />
           <ReactBarcode value={shortID} className='w-full' /> */}
-          <QRCodeSVG value="2UJNaZ0icRgeBVV74zIBos" className="mx-auto" />
-          <ReactBarcode value="2UJNaZ0icRgeBVV74zIBos" className="w-full" />
+          {/* <QRCodeSVG value="2UJNaZ0icRgeBVV74zIBos" className="mx-auto" />
+          <ReactBarcode value="2UJNaZ0icRgeBVV74zIBos" className="w-full" /> */}
         </div>
       </div>
     </div>
