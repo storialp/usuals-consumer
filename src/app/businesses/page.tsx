@@ -34,7 +34,7 @@ export default function Home() {
           </button>
         </div>
       )}
-      <BusinessSearch />
+      <BusinessSearch openSearch={openSearch} setOpenSearch={setOpenSearch} />
     </>
   )
 }

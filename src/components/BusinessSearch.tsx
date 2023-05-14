@@ -3,16 +3,22 @@ import { Fragment, useState, useEffect } from "react"
 import { BuildingStorefrontIcon } from "@heroicons/react/24/outline"
 import { Combobox, Dialog, Transition } from "@headlessui/react"
 import { useAtom } from "jotai/react"
-import { openSearchAtom } from "~/app/businesses/page"
 import { useRouter } from "next/navigation"
 import type { Business } from "~/app/types/types"
 import classNames from "~/utils/classNames"
 import { useSupabase } from "~/providers/supabase-provider"
 
-export default function BusinessSearch() {
+interface BusinessSeachProps {
+  setOpenSearch: React.Dispatch<React.SetStateAction<boolean>>
+  openSearch: boolean
+}
+
+export default function BusinessSearch({
+  openSearch,
+  setOpenSearch,
+}: BusinessSeachProps) {
   const { supabase } = useSupabase()
   const [query, setQuery] = useState("")
-  const [openSearch, setOpenSearch] = useAtom(openSearchAtom)
   const [businessList, setBusinessList] = useState<Business[]>([])
   const router = useRouter()
   async function getBusinesses(query: string) {
@@ -68,7 +74,6 @@ export default function BusinessSearch() {
                 onChange={(business: Business) => {
                   console.log(business)
                   router.push(`/businesses/${business.id}`)
-                  setOpenSearch(false)
                 }}
               >
                 <Combobox.Input
