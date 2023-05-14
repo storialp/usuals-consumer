@@ -13,11 +13,11 @@ export async function middleware(req: NextRequest) {
   let {
     data: { session },
   } = await supabase.auth.getSession()
+  if (session?.user.id && req.nextUrl.pathname !== "/sign-up") {
+    return NextResponse.redirect(`${req.nextUrl.origin}/sign-up`)
+  }
   if (req.nextUrl.pathname.startsWith("/_next/")) {
     return res
-  }
-  if (session?.user.id && !req.nextUrl.pathname.startsWith("/sign-up")) {
-    return NextResponse.redirect(`${req.nextUrl.origin}/sign-up`)
   }
   return res
 }
