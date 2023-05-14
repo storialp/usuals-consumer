@@ -19,5 +19,8 @@ export async function middleware(req: NextRequest) {
   if (!session?.user.id && req.nextUrl.pathname !== "/sign-up") {
     return NextResponse.redirect(`${req.nextUrl.origin}/sign-up`)
   }
+  if (session?.user.id && req.nextUrl.pathname !== "/sign-up") {
+    return NextResponse.redirect(req.nextUrl.origin)
+  }
   return res
 }
