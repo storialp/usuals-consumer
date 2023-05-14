@@ -2,11 +2,12 @@ import Head from "next/head"
 import { Inter } from "next/font/google"
 import NavBar from "~/components/NavBar"
 import { UserPrograms } from "~/components/UserPrograms"
-import { supabase } from "~/../supabase"
+import createServerClient from "~/utils/supabase-server"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export default async function Home() {
+  const supabase = createServerClient()
   const {
     data: { session },
   } = await supabase.auth.getSession()
