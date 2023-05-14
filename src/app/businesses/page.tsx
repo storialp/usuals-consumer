@@ -3,14 +3,13 @@ import Head from "next/head"
 import { Inter } from "next/font/google"
 import NavBar from "~/components/NavBar"
 import BusinessSearch from "~/components/BusinessSearch"
-import FakeSearchBar from "~/components/FakeSearchBar"
-import { atom, useAtom } from "jotai"
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline"
+import { useState } from "react"
 
 const inter = Inter({ subsets: ["latin"] })
-export const openSearchAtom = atom(true)
 
 export default function Home() {
-  const [openSearch] = useAtom(openSearchAtom)
+  const [openSearch, setOpenSearch] = useState(true)
   return (
     <>
       <Head>
@@ -20,7 +19,21 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavBar />
-      {!openSearch && <FakeSearchBar />}
+      {!openSearch && (
+        <div className="flex justify-center items-center mt-5">
+          <button
+            type="button"
+            className="inline-flex items-center gap-x-2 rounded-md bg-gray-200 w-3/4 h-12 text-base font-semibold text-gray-700 shadow-sm px-5"
+            onClick={() => setOpenSearch(true)}
+          >
+            <MagnifyingGlassIcon
+              className="-ml-0.5 h-6 w-6"
+              aria-hidden="true"
+            />
+            Search...
+          </button>
+        </div>
+      )}
       <BusinessSearch />
     </>
   )

@@ -34,6 +34,7 @@
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
+    "encoding": "^0.1.13",
     "supabase": "^1.57.3"
   }
 }
