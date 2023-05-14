@@ -10,20 +10,21 @@ export async function middleware(req: NextRequest) {
   console.log("middleware ran")
   const res = NextResponse.next()
   const supabase = createMiddlewareSupabaseClient<Database>({ req, res })
-  let {
+  const {
     data: { session },
   } = await supabase.auth.getSession()
   // if (!session && !req.nextUrl.pathname.startsWith("/sign-up")) {
   //   return NextResponse.redirect(`${req.nextUrl.origin}/sign-up`)
   // }
-  if (session || req.nextUrl.pathname.startsWith("/sign-up")) {
+  if (session?.user.id || req.nextUrl.pathname.startsWith("/sign-up")) {
     return res
+  }
+  if (!session?.user.id) {
+    return NextResponse.redirect(`${req.nextUrl.origin}/sign-up`)
   }
   if (req.nextUrl.pathname.startsWith("/_next/")) {
     return res
   }
-  if (!session) {
-    return NextResponse.redirect(`${req.nextUrl.origin}/sign-up`)
-  }
+
   // return NextResponse.redirect(`${req.nextUrl.origin}/sign-up`)
 }
