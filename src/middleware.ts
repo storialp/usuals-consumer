@@ -4,6 +4,8 @@ import { NextResponse } from "next/server"
 import type { NextRequest } from "next/server"
 import type { Database } from "~/app/types/schema"
 
+export const revalidate = 0
+
 export async function middleware(req: NextRequest) {
   console.log("middleware ran")
   const res = NextResponse.next()
