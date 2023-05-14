@@ -13,6 +13,10 @@ export default function SignUp() {
   async function signInWIthGoogle() {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: "google",
+      options: {
+        redirectTo:
+          "https://usuals-consumer-web-git-app-router-storialp.vercel.app/",
+      },
     })
   }
   return (
