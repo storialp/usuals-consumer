@@ -22,5 +22,5 @@ export async function middleware(req: NextRequest) {
   if (req.nextUrl.pathname.startsWith("/_next/")) {
     return res
   }
-  return NextResponse.redirect(`${req.nextUrl.origin}/sign-up`)
+  // return NextResponse.redirect(`${req.nextUrl.origin}/sign-up`)
 }
