@@ -13,24 +13,9 @@ export async function middleware(req: NextRequest) {
   const {
     data: { session },
   } = await supabase.auth.getSession()
-  // if (!session && !req.nextUrl.pathname.startsWith("/sign-up")) {
-  //   return NextResponse.redirect(`${req.nextUrl.origin}/sign-up`)
-  // }
-  // if (session?.user.id || req.nextUrl.pathname.startsWith("/sign-up")) {
-  //   return res
-  // }
-  if (session?.user.id) {
-    if (req.nextUrl.pathname.startsWith("/sign-up")) {
-      return NextResponse.redirect(req.nextUrl.origin)
-    }
-    return res
-  }
-  if (!session?.user.id) {
+
+  if (!session && !req.nextUrl.pathname.startsWith("/sign-up")) {
     return NextResponse.redirect(`${req.nextUrl.origin}/sign-up`)
   }
-  if (req.nextUrl.pathname.startsWith("/_next/")) {
-    return res
-  }
-
-  // return NextResponse.redirect(`${req.nextUrl.origin}/sign-up`)
+  return res
 }
