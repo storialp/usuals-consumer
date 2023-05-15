@@ -14,9 +14,8 @@ export async function middleware(req: NextRequest) {
     data: { session },
   } = await supabase.auth.getSession()
 
-  await new Promise((resolve) => {
-    setTimeout(resolve, 50)
-  })
+  await supabase.auth.getSession()
+  console.log(session)
 
   if (!session && req.nextUrl.pathname !== "/sign-up") {
     const url = new URL(req.url)
