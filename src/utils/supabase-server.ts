@@ -4,6 +4,7 @@ import type { Database } from "~/app/types/schema"
 
 const createServerClient = () =>
   createServerComponentSupabaseClient<Database>({
+    // @ts-expect-error Weird headers error, conflicts with the docs
     headers,
     cookies,
   })
