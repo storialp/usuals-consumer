@@ -36,7 +36,8 @@ export default async function Home({
       </Head>
       {/* {session ? <NavBar /> : <SignUp />} */}
       <NavBar />
-      {session?.user.id && businessData[0]?.id && (
+
+      {session?.user.id && businessData && (
         // @ts-expect-error Async Server Component
         <Program
           businessData={businessData[0]}

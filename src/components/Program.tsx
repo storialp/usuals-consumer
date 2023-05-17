@@ -6,14 +6,14 @@ import { Business } from "~/app/types/types"
 import { useSupabase } from "~/providers/supabase-provider"
 
 const Program = async (props: {
-  businessData: Business
+  businessData: Business | null
   user: string
   stamps: number | null
 }) => {
   const { businessData, user, stamps } = props
   const { supabase } = useSupabase()
   const router = useRouter()
-  if (!businessData.id) {
+  if (!businessData?.id) {
     return <h1>Something went wrong</h1>
   }
   const joinProgram = async () => {
