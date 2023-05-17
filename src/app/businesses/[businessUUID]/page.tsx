@@ -3,6 +3,7 @@ import { Inter } from "next/font/google"
 import NavBar from "~/components/NavBar"
 import Program from "~/components/Program"
 import createServerClient from "~/utils/supabase-server"
+import type { Business } from "~/app/types/types"
 
 const inter = Inter({ subsets: ["latin"] })
 export default async function Home({
@@ -18,7 +19,7 @@ export default async function Home({
     .from("businesses")
     .select("*")
     .eq("id", params.businessUUID)
-    .single()
+    .returns<Business[]>()
   const { data: stamps, error } = await supabase
     .from("profiles_businesses")
     .select("stamps")
@@ -35,10 +36,10 @@ export default async function Home({
       </Head>
       {/* {session ? <NavBar /> : <SignUp />} */}
       <NavBar />
-      {session?.user.id && businessData?.id && (
+      {session?.user.id && businessData[0]?.id && (
         // @ts-expect-error Async Server Component
         <Program
-          businessData={businessData}
+          businessData={businessData[0]}
           user={session.user.id}
           stamps={stamps?.stamps || null}
         />

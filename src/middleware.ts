@@ -34,5 +34,13 @@ export async function middleware(req: NextRequest) {
   // }
   // if (!session) {
   // }
+  if (!session) {
+    if (
+      req.nextUrl.pathname.startsWith("/sign-up") ||
+      req.nextUrl.pathname === "/"
+    ) {
+      return res
+    }
+  }
   return res
 }

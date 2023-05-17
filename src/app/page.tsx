@@ -3,6 +3,7 @@ import { Inter } from "next/font/google"
 import { UserCodes } from "../components/UserCodes"
 import NavBar from "../components/NavBar"
 import createServerClient from "~/utils/supabase-server"
+import SignUp from "~/components/SignUp"
 const inter = Inter({ subsets: ["latin"] })
 
 export default async function Home() {
@@ -20,7 +21,7 @@ export default async function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavBar />
-      {session && <UserCodes user={session.user.id} />}
+      {session ? <UserCodes user={session.user.id} /> : <SignUp />}
     </>
   )
 }
