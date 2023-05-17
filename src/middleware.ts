@@ -41,6 +41,9 @@ export async function middleware(req: NextRequest) {
     ) {
       return res
     }
+    const url = new URL(req.url)
+    url.pathname = "/sign-up"
+    return NextResponse.redirect(url)
   }
   return res
 }
