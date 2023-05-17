@@ -35,15 +35,24 @@ export async function middleware(req: NextRequest) {
   // if (!session) {
   // }
   if (!session) {
-    if (
-      req.nextUrl.pathname.startsWith("/sign-up") ||
-      req.nextUrl.pathname === "/"
-    ) {
-      return res
-    }
+    if (req.nextUrl.pathname === "/") return res
     const url = new URL(req.url)
     url.pathname = "/sign-up"
     return NextResponse.redirect(url)
   }
   return res
+}
+
+export const config = {
+  matcher: [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - api (API routes)
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     * - sign-up
+     */
+    "/((?!api|_next/static|_next/image|favicon.ico|sign-up).*)",
+  ],
 }
