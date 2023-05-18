@@ -1,5 +1,5 @@
 "use client"
-import { useRouter } from "next/router"
+import { useRouter } from "next/navigation"
 import Image from "next/image"
 import RewardsList from "./RewardsList"
 import { Business } from "~/app/types/types"
