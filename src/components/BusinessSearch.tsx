@@ -2,7 +2,6 @@
 import { Fragment, useState, useEffect } from "react"
 import { BuildingStorefrontIcon } from "@heroicons/react/24/outline"
 import { Combobox, Dialog, Transition } from "@headlessui/react"
-import { useAtom } from "jotai/react"
 import { useRouter } from "next/navigation"
 import type { Business } from "~/app/types/types"
 import classNames from "~/utils/classNames"

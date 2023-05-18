@@ -36,6 +36,7 @@ export async function middleware(req: NextRequest) {
   // }
   if (!session) {
     if (req.nextUrl.pathname === "/") return res
+    // if (req.nextUrl.pathname.startsWith("/")) return res
     const url = new URL(req.url)
     url.pathname = "/sign-up"
     return NextResponse.redirect(url)
