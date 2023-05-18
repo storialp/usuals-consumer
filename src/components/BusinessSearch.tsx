@@ -19,6 +19,9 @@ export default function BusinessSearch({
   const { supabase } = useSupabase()
   const [query, setQuery] = useState("")
   const [businessList, setBusinessList] = useState<Business[]>([])
+  const [selectedBusiness, setSelectedBusiness] = useState<Business | null>(
+    null
+  )
   const router = useRouter()
 
   useEffect(() => {
@@ -38,6 +41,13 @@ export default function BusinessSearch({
     getBusinesses()
   }, [query])
 
+  useEffect(() => {
+    if (!selectedBusiness) {
+      return
+    }
+    console.log(selectedBusiness)
+    router.push(`/businesses/${selectedBusiness.id}`)
+  }, [selectedBusiness, router])
   return (
     <Transition.Root
       show={openSearch}
@@ -69,12 +79,7 @@ export default function BusinessSearch({
             leaveTo="opacity-0 scale-95"
           >
             <Dialog.Panel className="mx-auto max-w-xl transform rounded-xl bg-white p-2 shadow-2xl ring-1 ring-black ring-opacity-5 transition-all">
-              <Combobox
-                onChange={(business: Business) => {
-                  console.log(business)
-                  router.push(`/businesses/${business.id}`)
-                }}
-              >
+              <Combobox onChange={setSelectedBusiness} value={selectedBusiness}>
                 <Combobox.Input
                   className="w-full rounded-md border-0 bg-gray-100 px-4 py-2.5 text-gray-900 focus:ring-0 sm:text-sm"
                   placeholder="Search..."
