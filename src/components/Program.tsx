@@ -5,7 +5,7 @@ import RewardsList from "./RewardsList"
 import { Business } from "~/app/types/types"
 import { useSupabase } from "~/providers/supabase-provider"
 
-const Program = async (props: {
+const Program = (props: {
   businessData: Business | null
   user: string
   stamps: number | null

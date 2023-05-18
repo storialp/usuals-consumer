@@ -7,7 +7,7 @@ import type { Business } from "~/app/types/types"
 
 const inter = Inter({ subsets: ["latin"] })
 export default async function Home({
-  params,
+  params: { businessUUID },
 }: {
   params: { businessUUID: string }
 }) {
@@ -18,14 +18,15 @@ export default async function Home({
   const { data: businessData } = await supabase
     .from("businesses")
     .select("*")
-    .eq("id", params.businessUUID)
+    .eq("id", businessUUID)
     .returns<Business[]>()
   const { data: stamps, error } = await supabase
     .from("profiles_businesses")
     .select("stamps")
-    .eq("business_id", params.businessUUID)
+    .eq("business_id", businessUUID)
     .eq("user_id", session?.user.id)
     .single()
+  console.log(businessData)
   return (
     <>
       <Head>
@@ -38,7 +39,6 @@ export default async function Home({
       <NavBar />
 
       {session?.user.id && businessData && (
-        // @ts-expect-error Async Server Component
         <Program
           businessData={businessData[0]}
           user={session.user.id}
